@@ -29,8 +29,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-
-/*int	main(void)
+int	main(void)
 {
 	int		fd;
 	char	*line;
@@ -43,37 +42,16 @@ char	*get_next_line(int fd)
 		return (1);
 	}
 
-	// Ler e imprimir linha por linha
+	// Ler e imprimir uma linha de cada vez
+	printf("Pressione Enter para ler uma linha:\n");
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		printf("%s", line);
-		free(line); // Libertar memória da linha retornada
+		getchar(); // Espera o usuário pressionar Enter
+		printf("%s", line); // Imprime a linha retornada
+		free(line); // Libera a memória da linha
 	}
 
 	// Fechar o ficheiro
-	printf("\n");
 	close(fd);
-	return (0);
-}*/
-
-int	main(void)
-{
-	int		fd;
-	char	*line;
-	char	buffer[1024+1];
-	int		read_bytes;
-
-	(void) line;
-	fd = open("test_file.txt", O_RDONLY);
-	(void) read_bytes;
-	buffer[1024] = '\0';
-	while(!(buffer[0] == 'E' && buffer[1] == '\n'))
-	{
-		printf("Quer uma nova linha, de enter to Exit (E):\n");
-		read_bytes = read(0,buffer,1024);
-		if(buffer[0] == 'E' && buffer[1] == '\n')
-			break ;
-		printf("%s", get_next_line(fd));
-	}
 	return (0);
 }
